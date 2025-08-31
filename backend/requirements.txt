@@ -5,3 +5,4 @@ python-dotenv
 cryptography
 flask_jwt_extended
 requests
+fpdf
