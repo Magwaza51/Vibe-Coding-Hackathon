@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrAI Consult - Healthcare AI</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg mx-3 my-3">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold fs-3 text-primary" href="#">DrAI Consult</a>
+            <ul class="navbar-nav flex-row gap-3 ms-4">
+                <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#symptom">Symptom Checker</a></li>
+                <li class="nav-item"><a class="nav-link" href="#book">Book Appointment</a></li>
+                <li class="nav-item"><a class="nav-link" href="#records">Medical Records</a></li>
+                <li class="nav-item"><a class="nav-link" href="#doctors">Doctors</a></li>
+            </ul>
+            <div class="d-flex ms-auto gap-2">
+                <a href="register.html" class="btn btn-outline-primary fw-bold px-4">Register</a>
+                <a href="login.html" class="btn btn-primary fw-bold px-4">Login</a>
+                <button id="logoutBtn" class="btn btn-danger fw-bold px-4 d-none" style="order:3;">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero container">
+        <div>
+            <h1 class="hero-title">Healthcare AI at Your Fingertips</h1>
+            <p class="hero-lead">Book appointments, check symptoms, and manage your health securely with AI-powered assistance.</p>
+            <a href="#symptom" class="btn btn-primary fw-bold me-2">Try Symptom Checker</a>
+            <a href="#register" class="btn btn-outline-primary fw-bold">Get Started</a>
+        </div>
+    </section>
+    <!-- Dashboard Section Placeholder -->
+    <section id="dashboard" class="container py-5">
+        <h2 class="fw-bold mb-4 text-center">Your Dashboard</h2>
+        <div class="row justify-content-center mb-4">
+            <div class="col-6 col-md-3 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Appointments</h5>
+                        <p class="card-text dashboard-appointments">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Prescriptions</h5>
+                        <p class="card-text dashboard-prescriptions">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-outline-primary" id="refreshDashboard">Refresh</button>
+        </div>
+    </section>
+
+    <!-- Symptom Checker Section Placeholder -->
+    <section id="symptom" class="container py-5">
+        <h2 class="fw-bold mb-4 text-center">AI Symptom Checker</h2>
+        <form id="symptomForm" class="mx-auto symptom-form-maxwidth">
+            <label for="symptoms" class="form-label">Describe your symptoms</label>
+            <textarea class="form-control mb-2" id="symptoms" rows="3" required></textarea>
+            <button type="submit" class="btn btn-primary">Check Symptoms</button>
+        </form>
+        <div id="symptomResult" class="alert mt-3 d-none"></div>
+        <div id="selfCareSteps" class="card card-body mt-3 d-none selfcare-steps-maxwidth">
+            <h6 class="fw-bold mb-2">Home Care Steps</h6>
+            <ol class="mb-0">
+                <li>Rest and avoid strenuous activity.</li>
+                <li>Drink plenty of fluids (water, juice, soup).</li>
+                <li>Monitor your temperature and symptoms regularly.</li>
+                <li>Take over-the-counter medication if needed (e.g., paracetamol for fever).</li>
+                <li>If symptoms worsen or new symptoms appear, consult a doctor.</li>
+            </ol>
+        </div>
+        <div class="text-center mt-3">
+            <button type="button" class="btn btn-outline-secondary d-none" id="downloadPrescription">Download Prescription PDF</button>
+            <button type="button" class="btn btn-outline-danger d-none" id="downloadMedCert">Download Medical Certificate</button>
+            <a href="#book" class="btn btn-outline-primary d-none" id="bookConsultBtn">Book Appointment</a>
+            <button type="button" class="btn btn-success ms-2" id="payAiBtn">Pay Now for AI Consultation (R100)</button>
+        </div>
+    </section>
+
+    <!-- Book Appointment Section Placeholder -->
+    <section id="book" class="container py-5">
+        <h2 class="fw-bold mb-4 text-center">Book an Appointment</h2>
+        <form id="bookingForm" class="mx-auto booking-form-maxwidth">
+        <div class="alert alert-info text-center mb-3">
+            <strong>Consultation Fee:</strong> Flat rate of <b>R100</b> per session.<br>
+            <span class="small">Payment Method: Secure online purchases (credit card, debit card, EFT, mobile money).</span><br>
+            <span class="small">Integration: Payment gateway (e.g., PayFast, PayPal, or Stripe).</span><br>
+            <span class="small text-success">Transparency: Patients pay only when booking a consultation.</span><br>
+            <span class="small text-danger"><b>Note:</b> This is a demo system. No real payments will be processed.</span>
+        </div>
+            <div class="mb-2">
+                <label for="bookName" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="bookName" required>
+            </div>
+            <div class="mb-2">
+                <label for="bookDoctor" class="form-label">Select Doctor</label>
+                <select class="form-select" id="bookDoctor" required>
+i                    <option value="">Choose...</option>
+                    <option>Dr. Alice Smith</option>
+                    <option>Dr. John Doe</option>
+                    <option>Dr. Maria Garcia</option>
+                    <option>Dr. David Lee</option>
+                    <option>Dr. Thabo Mokoena</option>
+                    <option>Dr. Zanele Khumalo</option>
+                    <option>Dr. Sipho Ndlovu</option>
+                    <option>Dr. Lerato Dlamini</option>
+                    <option>Dr. Nomsa Mthembu</option>
+                    <option>Dr. Pieter van der Merwe</option>
+                    <option>Dr. Fatima Patel</option>
+                    <option>Dr. Themba Nkosi</option>
+                    <option>Dr. Johan Botha</option>
+                    <option>Dr. Sibusiso Zulu</option>
+                    <option>Dr. Precious Mokoena</option>
+                    <option>Dr. Bongani Dube</option>
+                    <option>Dr. Anathi Gcabashe</option>
+                    <option>Dr. Elna Kruger</option>
+                    <option>Dr. Musa Mhlongo</option>
+                    <option>Dr. Lindiwe Sibanda</option>
+                </select>
+            </div>
+            <div class="mb-2">
+                <label for="bookDate" class="form-label">Date</label>
+                <input type="date" class="form-control" id="bookDate" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Book Appointment</button>
+            <button type="button" class="btn btn-success ms-2" id="payNowBtn">Pay Now (R500)</button>
+            <span class="mx-2 fw-bold" style="vertical-align:middle;">or</span>
+            <button type="button" class="btn btn-danger ms-2 text-white fw-bold" id="payLaterBtn">Pay Later</button>
+        </form>
+        <div id="bookingResult" class="alert mt-3 d-none"></div>
+    </section>
+
+    <!-- Medical Records Section Placeholder -->
+    <section id="records" class="container py-5">
+        <h2 class="fw-bold mb-4 text-center">Medical Records</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Date</th>
+                        <th>Doctor</th>
+                        <th>Type</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody id="recordsTable">
+                    <tr><td colspan="4" class="text-center text-muted">No records yet.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="container mb-5">
+        <div class="row g-4 justify-content-center">
+            <div class="col-12 col-md-4">
+                <div class="feature-card feature-min-card">
+                    <i class="bi bi-calendar2-check" data-tooltip="Book a Doctor"></i>
+                    <h5 class="fw-bold mb-2">Book a Doctor</h5>
+                    <p class="text-muted">Find and book trusted doctors instantly.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="feature-card feature-min-card">
+                    <i class="bi bi-chat-dots" data-tooltip="AI Symptom Check"></i>
+                    <h5 class="fw-bold mb-2">AI Symptom Check</h5>
+                    <p class="text-muted">Get instant guidance powered by AI.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="feature-card feature-min-card">
+                    <i class="bi bi-folder2-open" data-tooltip="Health Records"></i>
+                    <h5 class="fw-bold mb-2">Health Records</h5>
+                    <p class="text-muted">All your medical records securely accessible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps -->
+    <section class="container py-5">
+        <h2 class="fw-bold mb-4 text-center">How It Works</h2>
+        <div class="row g-4 justify-content-center text-center">
+            <div class="col-12 col-md-4">
+                <div class="step-num step-min-num">1</div>
+                <h5>Sign Up or Log In</h5>
+                <p class="text-muted small">Create your secure account in seconds.</p>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="step-num step-min-num">2</div>
+                <h5>Book or Chat</h5>
+                <p class="text-muted small">Book a doctor or start an AI chat for instant help.</p>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="step-num step-min-num">3</div>
+                <h5>Get Care</h5>
+                <p class="text-muted small">Receive advice, appointments, and manage your records.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors -->
+    <section id="doctors" class="container py-5">
+        <h2 class="fw-bold mb-4 text-center">Meet Our Doctors</h2>
+        <div class="mb-3 text-center">
+            <button type="button" class="btn btn-outline-primary" id="findNearbyBtn">Find Nearby Doctors/Clinics</button>
+            <label for="conditionType" class="visually-hidden">Filter by Condition</label>
+            <select id="conditionType" class="form-select d-inline-block w-auto ms-2" title="Filter by Condition">
+                <option value="">All Conditions</option>
+                <option value="General">General</option>
+                <option value="Pediatrician">Pediatrician</option>
+                <option value="AI">AI Consultation</option>
+            </select>
+        <div id="map" class="doctor-map"></div>
+        <div id="map" style="height:350px; width:100%; border-radius:1rem; margin-bottom:2rem;"></div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-6 col-md-3">
+                <div class="doctor-card doctor-min-card" data-lat="-26.2041" data-lng="28.0473" data-name="Dr. John Smith">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. John Smith">
+                    <h6 class="fw-bold">Dr. John Smith</h6>
+                    <p class="text-muted small">General Practitioner</p>
+                    <div class="mt-2">
+                        <button class="btn btn-sm btn-outline-primary directions-btn">Get Directions</button>
+                        <span class="badge bg-info text-dark ms-2">Waiting: 10 min</span>
+                        <button class="btn btn-sm btn-outline-success ms-2 tele-btn">Teleconsultation</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="doctor-card doctor-min-card" data-lat="-26.2022" data-lng="28.0456" data-name="Dr. Lindiwe Moyo">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Dr. Lindiwe Moyo">
+                    <h6 class="fw-bold">Dr. Lindiwe Moyo</h6>
+                    <p class="text-muted small">Pediatrician</p>
+                    <div class="mt-2">
+                        <button class="btn btn-sm btn-outline-primary directions-btn">Get Directions</button>
+                        <span class="badge bg-info text-dark ms-2">Waiting: 5 min</span>
+                        <button class="btn btn-sm btn-outline-success ms-2 tele-btn">Teleconsultation</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="doctor-card doctor-min-card" data-lat="-26.2035" data-lng="28.0490" data-name="Dr. AI Assistant">
+                    <img src="https://cdn-icons-png.flaticon.com/512/458/458595.png" alt="AI Assistant">
+                    <h6 class="fw-bold">Dr. AI Assistant</h6>
+                    <p class="text-muted small">Virtual AI Consultation</p>
+                    <div class="mt-2">
+                        <button class="btn btn-sm btn-outline-success tele-btn">Teleconsultation</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 DrAI Consult. All rights reserved. | Built with ❤️ using HTML, CSS & Bootstrap
+    </footer>
+
+    <!-- Main JS -->
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <canvas id="historyChart" width="400" height="200"></canvas>
+</body>
+</html>

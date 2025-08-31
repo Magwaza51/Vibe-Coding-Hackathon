@@ -1,0 +1,282 @@
+/* Disabled form utility */
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+    filter: grayscale(0.2);
+}
+/* Chatbot Widget */
+.chatbot-widget {
+    position: fixed;
+    bottom: 90px;
+    right: 24px;
+    width: 320px;
+    max-width: 95vw;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 24px rgba(13,110,253,0.18);
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+.chatbot-header {
+    background: #0d6efd;
+    color: #fff;
+    padding: 0.7rem 1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.chatbot-body {
+    padding: 1rem;
+    height: 220px;
+    overflow-y: auto;
+    background: #f8fafc;
+    font-size: 1rem;
+}
+.chatbot-form {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem 1rem 1rem;
+    background: #fff;
+}
+.chatbot-form input {
+    flex: 1;
+}
+.chatbot-open-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9998;
+    background: #0d6efd;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 2rem;
+    box-shadow: 0 4px 16px rgba(13,110,253,0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.chatbot-msg {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-end;
+}
+.chatbot-msg.user {
+    justify-content: flex-end;
+}
+.chatbot-msg .bubble {
+    padding: 0.6rem 1rem;
+    border-radius: 1.2rem;
+    max-width: 80%;
+    font-size: 1rem;
+}
+.chatbot-msg.user .bubble {
+    background: #0d6efd;
+    color: #fff;
+    border-bottom-right-radius: 0.3rem;
+}
+.chatbot-msg.bot .bubble {
+    background: #e3f0ff;
+    color: #222;
+    border-bottom-left-radius: 0.3rem;
+}
+@media (max-width: 600px) {
+    .chatbot-widget {
+        right: 2vw;
+        bottom: 70px;
+        width: 98vw;
+        max-width: 98vw;
+    }
+    .chatbot-open-btn {
+        right: 2vw;
+        bottom: 12px;
+    }
+}
+/* Interactivity: Tooltip */
+.custom-tooltip {
+    position: absolute;
+    background: #222;
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    z-index: 9999;
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+/* Interactivity: Modal */
+.custom-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+.custom-modal-content {
+    background: #fff;
+    border-radius: 1.2rem;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 8px 32px rgba(13,110,253,0.10);
+    min-width: 300px;
+    max-width: 90vw;
+    text-align: center;
+}
+
+/* Feature/Doctor Card Interactivity */
+.feature-min-card.active, .doctor-min-card.selected {
+    box-shadow: 0 8px 32px rgba(13,110,253,0.22) !important;
+    border: 2px solid #0d6efd33;
+    transform: scale(1.03);
+}
+
+/* Step Animation */
+.step-min-num.step-animate {
+    animation: popIn 0.5s cubic-bezier(.5,1.8,.5,1) forwards;
+}
+@keyframes popIn {
+    0% { transform: scale(0.7); opacity: 0.2; }
+    80% { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(1); }
+}
+/* Base Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background: #f8fafc;
+}
+h1, h2, h3, h4, .hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #0d6efd;
+}
+.text-muted { color: #6c757d !important; }
+
+/* Navbar */
+.navbar {
+    background: rgba(255,255,255,0.9);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    padding: 1rem 2rem;
+}
+.navbar .btn {
+    border-radius: 25px;
+    font-weight: 600;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(120deg, #e3f0ff 60%, #f8fafc 100%);
+    border-radius: 2rem;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 4rem;
+    box-shadow: 0 8px 32px rgba(13,110,253,0.06);
+}
+.hero-title {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+.hero-lead {
+    font-size: 1.3rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+.hero .btn-primary {
+    padding: 0.75rem 2.5rem;
+    font-size: 1.2rem;
+}
+
+/* Feature Cards */
+.feature-card {
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 24px rgba(13,110,253,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 32px rgba(13,110,253,0.15);
+}
+.feature-card i, .feature-card svg {
+    font-size: 2.2rem;
+    color: #0d6efd;
+    margin-bottom: 1rem;
+}
+
+/* Steps Section */
+.step-num {
+    width: 50px;
+    height: 50px;
+    background: #0d6efd;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0 auto 0.5rem;
+}
+
+/* Doctors */
+.doctor-card {
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 24px rgba(13,110,253,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.doctor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 32px rgba(13,110,253,0.15);
+}
+.doctor-card img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px solid #0d6efd33;
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    background: #fff;
+    text-align: center;
+    padding: 2rem 1rem;
+    border-top: 1px solid #e3e8ee;
+    margin-top: 4rem;
+    font-size: 0.95rem;
+    color: #6c757d;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    .hero-title { font-size: 2rem; }
+    .hero-lead { font-size: 1rem; }
+    .navbar { padding: 0.7rem 0.5rem; }
+    .feature-card, .doctor-card { padding: 1.2rem 0.7rem; }
+    .step-num { width: 40px; height: 40px; font-size: 1rem; }
+    .register-card, .login-card { padding: 1.2rem 0.7rem; }
+    .card { font-size: 0.98rem; }
+}
