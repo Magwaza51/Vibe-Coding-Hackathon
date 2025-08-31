@@ -23,7 +23,7 @@ cipher = Fernet(FERNET_KEY)
 
 app = Flask(__name__)
 # Allow CORS from local frontend
-CORS(app, origins=["http://127.0.0.1:5500", "http://localhost:5500"], supports_credentials=True)
+CORS(app, origins=["https://drai-consult-6t0nrogfw-mlungisi-magwazas-projects.vercel.app"])
 
 import hashlib
 import os
@@ -36,7 +36,7 @@ import io
 
 app = Flask(__name__)
 # Allow CORS from local frontend
-CORS(app, origins=["http://127.0.0.1:5500", "http://localhost:5500"], supports_credentials=True)
+CORS(app, origins=["https://drai-consult-6t0nrogfw-mlungisi-magwazas-projects.vercel.app"])
 app.secret_key = os.urandom(24)
 app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'your-secret-key')
 jwt = JWTManager(app)
