@@ -386,4 +386,4 @@ def doctor_dashboard():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    print(Fernet.generate_key())
+    print(Fernet.generate_key().decode())
