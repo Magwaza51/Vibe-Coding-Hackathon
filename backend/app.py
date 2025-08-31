@@ -384,6 +384,5 @@ def doctor_dashboard():
     db.close()
     return jsonify({'patients_seen': patients_seen, 'pending_appointments': pending_appointments, 'appointments': appointments})
 
-if __name__ == '__main__':
-    app.run(debug=True)
-    print(Fernet.generate_key().decode())
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
