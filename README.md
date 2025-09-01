@@ -91,7 +91,7 @@ DrAI Consult is a professional healthcare web application that enables users to:
 - Use the same email for booking and payment to ensure correct flow
 
 ## Authors
-- [Mlungisi Magwaza]
+- [Mlungisi Magwaza and Thambisile Nkambule]
 
 ## License
 [Specify your license here]
