@@ -48,8 +48,16 @@ app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'your-secret-key
 jwt = JWTManager(app)
 
 # Register payments_demo_api blueprint
+
 from payments_demo_api import payments_demo_api
+from flask_cors import CORS as BlueprintCORS
+BlueprintCORS(payments_demo_api)
 app.register_blueprint(payments_demo_api)
+
+# CORS test route
+@app.route('/cors-test')
+def cors_test():
+    return "CORS is working!"
 
 
 # Database connection
