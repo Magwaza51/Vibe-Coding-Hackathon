@@ -7,5 +7,3 @@ flask_jwt_extended
 requests
 fpdf
 gunicorn
--e .
-requirements.txt
