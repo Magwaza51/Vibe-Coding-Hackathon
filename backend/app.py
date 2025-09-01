@@ -24,9 +24,11 @@ cipher = Fernet(FERNET_KEY)
 
 
 app = Flask(__name__)
-# Allow deployed frontend and localhost for CORS
+# Allow deployed frontend, both backend URLs, and localhost for CORS
 CORS(app, resources={r"/*": {"origins": [
-    "https://vibe-coding-hackathon-ht03.onrender.com",
+    "https://vibe-coding-hackathon-ht03.onrender.com",  # frontend
+    "https://vibe-coding-hackathon-2.onrender.com",     # backend (main)
+    "https://vibe-coding-hackathon.onrender.com",       # backend (alt, just in case)
     "http://localhost:3000"
 ]}})
 
