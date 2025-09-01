@@ -6,3 +6,4 @@ cryptography
 flask_jwt_extended
 requests
 fpdf
+gunicorn
