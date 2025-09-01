@@ -23,9 +23,9 @@ cipher = Fernet(FERNET_KEY)
 
 
 app = Flask(__name__)
-# Allow CORS from deployed frontend with all headers and methods
+# TEMP: Allow all origins for debugging CORS issues
 CORS(app,
-    origins=["https://vibe-coding-hackathon-ht03.onrender.com"],
+    origins="*",
     supports_credentials=True,
     allow_headers="*",
     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
