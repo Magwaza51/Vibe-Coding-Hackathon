@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
               return;
             }
             try {
-              const res = await fetch('http://localhost:5000/api/demo_payment/doctor', {
+              const res = await fetch('https://vibe-coding-hackathon-2.onrender.com/api/demo_payment/doctor', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email })
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
               return;
             }
             try {
-              const res = await fetch('http://localhost:5000/api/demo_payment/ai', {
+              const res = await fetch('https://vibe-coding-hackathon-2.onrender.com/api/demo_payment/ai', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email })
@@ -623,7 +623,7 @@ document.addEventListener('DOMContentLoaded', function() {
       downloadPrescription.addEventListener('click', function() {
         const patient = prompt('Enter your name for the prescription PDF:');
         const advice = symptomResult.textContent;
-        fetch('/api/prescription_pdf', {
+  fetch('https://vibe-coding-hackathon-2.onrender.com/api/prescription_pdf', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ patient, advice })
@@ -650,7 +650,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Use dynamic daysOff and reason if available
         const days_off = downloadMedCert.dataset.daysOff || 3;
         const reason = downloadMedCert.dataset.reason || 'Booked off work/school by AI Symptom Checker';
-        fetch('http://localhost:5000/api/medical_certificate', {
+  fetch('https://vibe-coding-hackathon-2.onrender.com/api/medical_certificate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ patient, doctor, date, days: days_off, reason })
@@ -687,7 +687,7 @@ document.addEventListener('DOMContentLoaded', function() {
       bookingResult.textContent = 'Booking appointment...';
       bookingResult.classList.remove('d-none');
       try {
-  const res = await fetch('http://localhost:5000/book_appointment', {
+  const res = await fetch('https://vibe-coding-hackathon-2.onrender.com/book_appointment', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, doctor, date, email })
@@ -737,7 +737,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   async function loadPatientDashboard() {
-    const res = await fetch('/api/patient_dashboard', {
+  const res = await fetch('https://vibe-coding-hackathon-2.onrender.com/api/patient_dashboard', {
       headers: { 'Authorization': 'Bearer ' + localStorage.getItem('access_token') }
     });
     const data = await res.json();
