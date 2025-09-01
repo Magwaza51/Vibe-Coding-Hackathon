@@ -59,8 +59,8 @@
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const payload = { email, password };
-        // Use the correct backend URL if running frontend and backend on different ports
-        const backendUrl = 'http://localhost:5000/api/login';
+        // Use the deployed backend URL for login
+        const backendUrl = 'https://vibe-coding-hackathon-2.onrender.com/api/login';
         let res, data;
         try {
             res = await fetch(backendUrl, {

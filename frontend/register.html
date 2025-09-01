@@ -94,7 +94,8 @@
             const age = document.getElementById('age').value;
             const history = document.getElementById('history').value;
             const payload = { name, email, password, age, history };
-            const res = await fetch('http://localhost:5000/register', {
+            // Use deployed backend URL
+            const res = await fetch('https://vibe-coding-hackathon-2.onrender.com/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
