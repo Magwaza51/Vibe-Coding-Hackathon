@@ -22,8 +22,10 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 cipher = Fernet(FERNET_KEY)
 
 app = Flask(__name__)
-# Allow CORS from local frontend
-CORS(app, origins=["https://drai-consult-6t0nrogfw-mlungisi-magwazas-projects.vercel.app"])
+# Allow CORS from deployed frontend
+CORS(app, origins=[
+    "https://vibe-coding-hackathon-ht03.onrender.com"
+])
 
 import hashlib
 import os
