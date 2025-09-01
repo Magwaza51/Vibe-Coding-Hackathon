@@ -21,11 +21,15 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 
 cipher = Fernet(FERNET_KEY)
 
+
 app = Flask(__name__)
-# Allow CORS from deployed frontend
-CORS(app, origins=[
-    "https://vibe-coding-hackathon-ht03.onrender.com"
-])
+# Allow CORS from deployed frontend with all headers and methods
+CORS(app,
+    origins=["https://vibe-coding-hackathon-ht03.onrender.com"],
+    supports_credentials=True,
+    allow_headers="*",
+    methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+)
 
 import hashlib
 import os
@@ -36,9 +40,9 @@ from email.mime.text import MIMEText
 from fpdf import FPDF
 import io
 
-app = Flask(__name__)
-# Allow CORS from local frontend
-CORS(app, origins=["https://drai-consult-6t0nrogfw-mlungisi-magwazas-projects.vercel.app"])
+app.secret_key = os.urandom(24)
+app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'your-secret-key')
+jwt = JWTManager(app)
 app.secret_key = os.urandom(24)
 app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'your-secret-key')
 jwt = JWTManager(app)
