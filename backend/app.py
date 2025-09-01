@@ -22,10 +22,11 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 cipher = Fernet(FERNET_KEY)
 
 
+
 app = Flask(__name__)
-# TEMP: Allow all origins for debugging CORS issues
+# Allow only your deployed frontend for CORS
 CORS(app,
-    origins="*",
+    origins=["https://vibe-coding-hackathon-ht03.onrender.com"],
     supports_credentials=True,
     allow_headers="*",
     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
@@ -87,6 +88,7 @@ def get_doctors():
 # User registration (adults)
 @app.route('/register', methods=['POST'])
 def register():
+    print("Register endpoint hit")
     data = request.json
     name = data.get('name')
     email = data.get('email')
