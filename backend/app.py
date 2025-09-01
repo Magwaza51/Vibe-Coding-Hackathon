@@ -24,13 +24,11 @@ cipher = Fernet(FERNET_KEY)
 
 
 app = Flask(__name__)
-# Allow only your deployed frontend for CORS
-CORS(app,
-    origins=["https://vibe-coding-hackathon-ht03.onrender.com"],
-    supports_credentials=True,
-    allow_headers="*",
-    methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-)
+# Allow deployed frontend and localhost for CORS
+CORS(app, resources={r"/*": {"origins": [
+    "https://vibe-coding-hackathon-ht03.onrender.com",
+    "http://localhost:3000"
+]}})
 
 import hashlib
 import os
